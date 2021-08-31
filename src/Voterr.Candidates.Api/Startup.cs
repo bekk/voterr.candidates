@@ -5,6 +5,7 @@ using Microsoft.Identity.Web;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Voterr.Candidates.Api.Services;
 
 namespace Voterr.Candidates.Api
 {
@@ -22,6 +23,8 @@ namespace Voterr.Candidates.Api
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+
+            services.AddSingleton<CandidatesService>();
 
             services.AddControllers();
         }
